@@ -1,0 +1,24 @@
+Refactoring plan for ManageAccount as part of Field Day Flex:
+
+1. Remove all comments obviously written by ChatGPT.
+  - ... there is a reason we have to go back and rewrite this component. ChatGPT is not a good engineer. Please don't use it.
+
+2. Simplify State Management:
+  - Group auth-related states (isAuthorized, isOwner, canEdit)
+  - Group member-related states (members, newMemberEmail, newMemberSelectedRole)
+  - Group UI state (loading, isInit, showDeleteConfirm)
+
+3. Properly use a useEffect for project initialization
+  - Currently multiple useEffects are being used to init the page. This can be just one.
+
+4. Move all Firebase calls to firestore.js or some other DAO-like class.
+  - components should not be concerned with database access!
+  - things are too tightly coupled. Role updating should also be moved.
+
+5. members list should not be modifed directly
+  - use thigns like state reducers
+  i.e:
+    setMemberState(prev => ({...prev, members: prev.members.map(m => ... you know})
+
+6. renderMemberList is hard to read
+   - inline logic is hard to follow. rewrite this and extract that

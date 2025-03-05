@@ -1,0 +1,24 @@
+Possible options for geolocation services:
+
+- react native's implementation -- Geolocation API
+    - this might be deprecated??
+    - scratch this the PWA is not react native its just regular react
+
+- google maps has an API that also does this
+    - cost?
+    - dealing with an API key rather than straight device data?
+
+- normal browser geolocation API
+     - most modern browsers support this
+if("geolocater" in navigator) {
+    navigator.geolocation.getCurrentPosition() .....
+}
+
+- IP based solutions?
+    - seems pretty bad because of accuracy
+    - if in a research field, mobile IP might be even more inaccurate
+
+- geofencing? too overkill?
+    - realtime updates on which research site you're in, but not sure if that is needed
+    - cool concept but if we're not careful the app will waste so much battery
+
